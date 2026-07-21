@@ -1,0 +1,6 @@
+{
+  "name": "The Detail Dude",
+  "description": "Mobile detailing, paint correction, and ceramic coating specialist Trevor Ehrenholz. Instant custom quotes, service package breakdown, before/after comparison gallery, and online booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
