@@ -1,5 +1,5 @@
 import React from 'react';
-import { Truck, Droplets, Zap, ShieldCheck, MapPin, Phone } from 'lucide-react';
+import { Truck, MapPin, Clock, Phone } from 'lucide-react';
 import { CLIENT_INFO } from '../data/detailingData';
 
 export const MobileServiceBanner: React.FC = () => {
@@ -28,34 +28,18 @@ export const MobileServiceBanner: React.FC = () => {
             {/* Feature Bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
-                <Droplets className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-xs text-white">Deionized Spot-Free Water</h4>
-                  <p className="text-[11px] text-zinc-400">Zero mineral residue or water spots during rinse.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
-                <Zap className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-xs text-white">Silent Onboard Power</h4>
-                  <p className="text-[11px] text-zinc-400">We supply our own electric power. Zero plug-in needed.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
-                <ShieldCheck className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-xs text-white">Precision Paint Gauges</h4>
-                  <p className="text-[11px] text-zinc-400">Clear coat thickness measured before machine polish.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
                 <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-xs text-white">Home or Workplace Service</h4>
                   <p className="text-[11px] text-zinc-400">Parked at home, office, or private garage.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
+                <Clock className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-xs text-white">Flexible Scheduling</h4>
+                  <p className="text-[11px] text-zinc-400">Book a time that works — Mon to Sat, across Alberta.</p>
                 </div>
               </div>
             </div>

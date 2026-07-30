@@ -173,8 +173,8 @@ export const BEFORE_AFTER_EXAMPLES: BeforeAfterItem[] = [
     category: 'Paint Correction',
     vehicle: '2022 Chevrolet Corvette C8 - Carbon Flash Black',
     description: 'Heavy automated car wash swirls and spiderwebbing completely restored to a crystal-clear mirror finish.',
-    beforeImg: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=80', // polisher on dark paint
-    afterImg: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80', // glossy reflection
+    beforeImg: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80',
+    afterImg: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80',
     correctionLevel: '92% Swirl Removal',
   },
   {
@@ -183,8 +183,8 @@ export const BEFORE_AFTER_EXAMPLES: BeforeAfterItem[] = [
     category: 'Ceramic Coating',
     vehicle: '2023 Ford F-250 Super Duty - Ruby Red Metallic',
     description: 'Brought dull oxidized paint to life with deep metallic flake depth and self-cleaning water beading.',
-    beforeImg: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1000&q=80',
+    beforeImg: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80',
+    afterImg: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80',
     correctionLevel: 'Ultra Gloss & Hydrophobic',
   },
   {
@@ -193,8 +193,8 @@ export const BEFORE_AFTER_EXAMPLES: BeforeAfterItem[] = [
     category: 'Mobile Detailing',
     vehicle: '2021 Porsche Cayenne Turbo - Cognac Leather',
     description: 'High temperature steam extraction removed embedded oils, denim dye transfer, and grime from leather perforations.',
-    beforeImg: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80',
+    beforeImg: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80',
+    afterImg: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1000&q=80',
     correctionLevel: '100% Sanitized Matte Leather Finish',
   },
 ];

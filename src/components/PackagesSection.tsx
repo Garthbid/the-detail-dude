@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { SERVICE_PACKAGES } from '../data/detailingData';
 import { ServiceCategory } from '../types';
-import { Check, Shield, Clock, Award, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, Shield, Clock, Award, Phone, Sparkles } from 'lucide-react';
 
 interface PackagesSectionProps {
-  onSelectPackage: (packageId: string) => void;
+  onCallTrevor: () => void;
 }
 
-export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackage }) => {
+export const PackagesSection: React.FC<PackagesSectionProps> = ({ onCallTrevor }) => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory | 'all'>('all');
 
   const filteredPackages =
@@ -140,15 +140,15 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               {/* Bottom Card Footer */}
               <div className="p-6 pt-0">
                 <button
-                  onClick={() => onSelectPackage(pkg.id)}
+                  onClick={onCallTrevor}
                   className={`w-full py-3.5 px-4 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer ${
                     pkg.popular
                       ? 'bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-xl shadow-red-950 border border-red-500/40'
                       : 'bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700/60'
                   }`}
                 >
-                  <span>Select & Book Package</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <Phone className="w-4 h-4" />
+                  <span>Call Trevor to Book</span>
                 </button>
               </div>
             </div>

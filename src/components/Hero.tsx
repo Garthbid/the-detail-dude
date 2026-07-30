@@ -1,16 +1,14 @@
 import React from 'react';
-import { Phone, Sparkles, Shield, ArrowRight, CheckCircle2, Car, Award, Zap } from 'lucide-react';
+import { Phone, Sparkles, ArrowRight, CheckCircle2, Zap } from 'lucide-react';
 import { CLIENT_INFO } from '../data/detailingData';
 
 interface HeroProps {
   onOpenConsultant: () => void;
-  onOpenBooking: () => void;
   onScrollToEstimator: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onOpenConsultant,
-  onOpenBooking,
   onScrollToEstimator,
 }) => {
   return (
@@ -59,32 +57,28 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>100% Mobile Self-Contained Rig</span>
               </div>
               <div className="flex items-center gap-2 bg-zinc-900/80 p-2.5 rounded-lg border border-zinc-800/80">
-                <Shield className="w-4 h-4 text-red-500 shrink-0" />
-                <span>9H & Graphene SiO2 Shield</span>
-              </div>
-              <div className="flex items-center gap-2 bg-zinc-900/80 p-2.5 rounded-lg border border-zinc-800/80 col-span-2 sm:col-span-1">
-                <Award className="w-4 h-4 text-red-500 shrink-0" />
-                <span>Spot-Free Deionized Water</span>
+                <Sparkles className="w-4 h-4 text-red-500 shrink-0" />
+                <span>Paint Correction Specialist</span>
               </div>
             </div>
 
             {/* Call to Actions */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <a
+                href={`tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`}
+                className="px-6 py-4 text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-xl shadow-xl shadow-red-950/80 border border-red-500/40 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer group"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call Trevor: {CLIENT_INFO.phone}</span>
+              </a>
+
               <button
                 onClick={onScrollToEstimator}
-                className="px-6 py-4 text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-xl shadow-xl shadow-red-950/80 border border-red-500/40 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer group"
+                className="px-6 py-4 text-sm font-bold text-zinc-200 bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all hover:border-red-500/40 flex items-center justify-center gap-2 cursor-pointer shadow-lg group"
               >
                 <span>Calculate Instant Quote</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
-
-              <a
-                href={`tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`}
-                className="px-6 py-4 text-sm font-bold text-zinc-200 bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 rounded-xl transition-all hover:border-red-500/40 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
-              >
-                <Phone className="w-4 h-4 text-red-500" />
-                <span>Call Trevor: {CLIENT_INFO.phone}</span>
-              </a>
             </div>
 
             {/* AI Advisor Prompt Bar */}
@@ -138,14 +132,6 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Quick Specs List */}
               <div className="py-4 space-y-3">
                 <div className="flex items-start gap-3 text-xs">
-                  <Car className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-semibold text-zinc-200">Mobile Van Equipped:</span>
-                    <p className="text-zinc-400 text-[11px]">No water or power hookup required from customer.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 text-xs">
                   <Zap className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold text-zinc-200">Rupes Machine Polishing:</span>
@@ -154,10 +140,10 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 <div className="flex items-start gap-3 text-xs">
-                  <Shield className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-zinc-200">Ceramic Warranty Included:</span>
-                    <p className="text-zinc-400 text-[11px]">Registered 3 to 5-year hydrophobic protection records.</p>
+                    <span className="font-semibold text-zinc-200">Owner-Operated Service:</span>
+                    <p className="text-zinc-400 text-[11px]">Every detail performed personally by Trevor — no subcontractors.</p>
                   </div>
                 </div>
               </div>
@@ -170,12 +156,13 @@ export const Hero: React.FC<HeroProps> = ({
                 >
                   💬 Text Trevor
                 </a>
-                <button
-                  onClick={onOpenBooking}
-                  className="py-2.5 px-3 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-lg text-center transition-colors shadow-md shadow-red-950 uppercase tracking-wider"
+                <a
+                  href={`tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`}
+                  className="py-2.5 px-3 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-lg text-center transition-colors shadow-md shadow-red-950 uppercase tracking-wider flex items-center justify-center gap-1.5"
                 >
-                  Schedule Service
-                </button>
+                  <Phone className="w-3.5 h-3.5" />
+                  Call Trevor
+                </a>
               </div>
             </div>
           </div>

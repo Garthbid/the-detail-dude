@@ -1,13 +1,13 @@
 import React from 'react';
-import { Phone, Mail, Shield, MapPin, Calendar, Clock } from 'lucide-react';
+import { Phone, Mail, Shield, MapPin, Clock } from 'lucide-react';
 import { CLIENT_INFO } from '../data/detailingData';
 
 interface FooterProps {
-  onOpenBooking: () => void;
+  onCallTrevor: () => void;
   onOpenConsultant: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConsultant }) => {
+export const Footer: React.FC<FooterProps> = ({ onCallTrevor, onOpenConsultant }) => {
   return (
     <footer className="bg-zinc-950 text-white border-t border-zinc-800/90 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,18 +89,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConsultant 
           {/* Col 4: Quick Actions */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-red-400 font-mono">
-              BOOKING & AI ADVISOR
+              CONTACT & AI ADVISOR
             </h4>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Have a question about your car’s paint? Use Trevor's AI tool or schedule your appointment online.
+              Have a question about your car’s paint? Use Trevor's AI tool or call Trevor directly to get started.
             </p>
             <div className="space-y-2">
               <button
-                onClick={onOpenBooking}
+                onClick={onCallTrevor}
                 className="w-full py-2.5 px-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-red-950"
               >
-                <Calendar className="w-3.5 h-3.5" />
-                <span>Schedule Appointment</span>
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Trevor: {CLIENT_INFO.phone}</span>
               </button>
 
               <button

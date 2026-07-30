@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Shield, Menu, X, Sparkles, MapPin, Calendar } from 'lucide-react';
+import { Phone, Mail, Shield, Menu, X, Sparkles, MapPin } from 'lucide-react';
 import { CLIENT_INFO } from '../data/detailingData';
 
 interface HeaderProps {
   onOpenQuote: () => void;
   onOpenConsultant: () => void;
-  onOpenBooking: () => void;
+  onCallTrevor: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenQuote,
   onOpenConsultant,
-  onOpenBooking,
+  onCallTrevor,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -140,13 +140,13 @@ export const Header: React.FC<HeaderProps> = ({
               <Sparkles className="w-3.5 h-3.5 text-red-400 animate-pulse" />
               <span>AI Vehicle Advice</span>
             </button>
-            <button
-              onClick={onOpenBooking}
+            <a
+              href={`tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`}
               className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-lg shadow-lg shadow-red-900/40 border border-red-500/40 transition-all hover:scale-[1.02] cursor-pointer flex items-center gap-1.5"
             >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Book Appointment</span>
-            </button>
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Trevor</span>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -234,11 +234,12 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenBooking();
+                onCallTrevor();
               }}
-              className="w-full py-2.5 px-3 text-xs font-bold text-white bg-red-600 rounded-lg text-center uppercase tracking-wider"
+              className="w-full py-2.5 px-3 text-xs font-bold text-white bg-red-600 rounded-lg text-center uppercase tracking-wider flex items-center justify-center gap-1.5"
             >
-              Book Service
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Trevor</span>
             </button>
           </div>
         </div>

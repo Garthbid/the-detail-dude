@@ -3,30 +3,27 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { MobileServiceBanner } from './components/MobileServiceBanner';
+import { WhyCeramicSection } from './components/WhyCeramicSection';
 import { PackagesSection } from './components/PackagesSection';
+import { CeramicMaintenanceBanner } from './components/CeramicMaintenanceBanner';
 import { QuoteEstimator } from './components/QuoteEstimator';
 import { GallerySection } from './components/GallerySection';
 import { ProcessSection } from './components/ProcessSection';
+import { PreTradeCleanSection } from './components/PreTradeCleanSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { AiConsultantModal } from './components/AiConsultantModal';
-import { BookingModal } from './components/BookingModal';
 import { CLIENT_INFO } from './data/detailingData';
-import { Phone, MessageSquare, Calendar, Sparkles } from 'lucide-react';
+import { Phone, MessageSquare } from 'lucide-react';
 import { QuoteSelection } from './types';
 
 export default function App() {
   const [isConsultantOpen, setIsConsultantOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedPackageForBooking, setSelectedPackageForBooking] = useState('platinum-mobile');
-  const [prefilledVehicleForBooking, setPrefilledVehicleForBooking] = useState('');
   const [initialConsultantData, setInitialConsultantData] = useState<Partial<QuoteSelection> | undefined>(undefined);
 
-  const handleOpenBooking = (packageId?: string, vehicleInfo?: string) => {
-    if (packageId) setSelectedPackageForBooking(packageId);
-    if (vehicleInfo) setPrefilledVehicleForBooking(vehicleInfo);
-    setIsBookingOpen(true);
+  const callTrevor = () => {
+    window.location.href = `tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`;
   };
 
   const handleOpenConsultantWithData = (data: Partial<QuoteSelection>) => {
@@ -34,11 +31,9 @@ export default function App() {
     setIsConsultantOpen(true);
   };
 
-  const handleBookFromAi = (packageName: string, vehicleInfo: string) => {
+  const handleCallFromAi = () => {
     setIsConsultantOpen(false);
-    setSelectedPackageForBooking('ceramic-coating-3yr');
-    setPrefilledVehicleForBooking(`${vehicleInfo} (${packageName})`);
-    setIsBookingOpen(true);
+    callTrevor();
   };
 
   const scrollToEstimator = () => {
@@ -57,7 +52,7 @@ export default function App() {
           setInitialConsultantData(undefined);
           setIsConsultantOpen(true);
         }}
-        onOpenBooking={() => handleOpenBooking()}
+        onCallTrevor={callTrevor}
       />
 
       {/* Main Page Sections */}
@@ -67,7 +62,6 @@ export default function App() {
             setInitialConsultantData(undefined);
             setIsConsultantOpen(true);
           }}
-          onOpenBooking={() => handleOpenBooking()}
           onScrollToEstimator={scrollToEstimator}
         />
 
@@ -75,18 +69,22 @@ export default function App() {
 
         <MobileServiceBanner />
 
-        <PackagesSection
-          onSelectPackage={(pkgId) => handleOpenBooking(pkgId)}
-        />
+        <WhyCeramicSection />
+
+        <PackagesSection onCallTrevor={callTrevor} />
+
+        <CeramicMaintenanceBanner onCallTrevor={callTrevor} />
 
         <QuoteEstimator
           onOpenConsultantWithData={handleOpenConsultantWithData}
-          onOpenBookingWithPackage={(pkgId, vehicle) => handleOpenBooking(pkgId, vehicle)}
+          onCallTrevor={callTrevor}
         />
 
         <GallerySection />
 
         <ProcessSection />
+
+        <PreTradeCleanSection onCallTrevor={callTrevor} />
 
         <TestimonialsSection />
 
@@ -95,7 +93,7 @@ export default function App() {
 
       {/* Footer */}
       <Footer
-        onOpenBooking={() => handleOpenBooking()}
+        onCallTrevor={callTrevor}
         onOpenConsultant={() => setIsConsultantOpen(true)}
       />
 
@@ -103,10 +101,10 @@ export default function App() {
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-40 bg-zinc-900/95 border border-red-800/60 rounded-2xl p-2.5 shadow-2xl backdrop-blur-md flex items-center justify-between gap-2">
         <a
           href={`tel:${CLIENT_INFO.phone.replace(/\D/g, '')}`}
-          className="flex-1 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs rounded-xl text-center flex items-center justify-center gap-1.5 border border-zinc-700/80"
+          className="flex-1 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl text-center shadow-md shadow-red-950 flex items-center justify-center gap-1.5"
         >
-          <Phone className="w-3.5 h-3.5 text-red-500" />
-          <span>Call Trevor</span>
+          <Phone className="w-3.5 h-3.5" />
+          <span>Call Trevor: {CLIENT_INFO.phone}</span>
         </a>
 
         <a
@@ -116,14 +114,6 @@ export default function App() {
         >
           <MessageSquare className="w-4 h-4 text-red-400" />
         </a>
-
-        <button
-          onClick={() => handleOpenBooking()}
-          className="flex-1 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl text-center shadow-md shadow-red-950 flex items-center justify-center gap-1.5"
-        >
-          <Calendar className="w-3.5 h-3.5" />
-          <span>Book Service</span>
-        </button>
       </div>
 
       {/* Modals */}
@@ -131,14 +121,7 @@ export default function App() {
         isOpen={isConsultantOpen}
         onClose={() => setIsConsultantOpen(false)}
         initialData={initialConsultantData}
-        onBookRecommendedPackage={handleBookFromAi}
-      />
-
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        selectedPackageId={selectedPackageForBooking}
-        prefilledVehicleInfo={prefilledVehicleForBooking}
+        onCallTrevor={handleCallFromAi}
       />
     </div>
   );

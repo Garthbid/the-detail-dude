@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Car, Loader2, CheckCircle2, Shield, Calendar, AlertCircle } from 'lucide-react';
+import { X, Sparkles, Car, Loader2, CheckCircle2, Shield, Phone, AlertCircle } from 'lucide-react';
 import { QuoteSelection, AiConsultationResult } from '../types';
 
 interface AiConsultantModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialData?: Partial<QuoteSelection>;
-  onBookRecommendedPackage: (packageName: string, vehicleInfo: string) => void;
+  onCallTrevor: () => void;
 }
 
 export const AiConsultantModal: React.FC<AiConsultantModalProps> = ({
   isOpen,
   onClose,
   initialData,
-  onBookRecommendedPackage,
+  onCallTrevor,
 }) => {
   const [vehicleYear, setVehicleYear] = useState(initialData?.vehicleYear || '2022');
   const [vehicleMake, setVehicleMake] = useState(initialData?.vehicleMake || 'Ford');
@@ -78,8 +78,6 @@ export const AiConsultantModal: React.FC<AiConsultantModalProps> = ({
       setLoading(false);
     }
   };
-
-  const vehicleString = `${vehicleYear} ${vehicleMake} ${vehicleModel} (${paintColor})`;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
@@ -230,14 +228,11 @@ export const AiConsultantModal: React.FC<AiConsultantModalProps> = ({
             </div>
 
             <button
-              onClick={() => {
-                onClose();
-                onBookRecommendedPackage(result.recommendedPackage, vehicleString);
-              }}
+              onClick={onCallTrevor}
               className="w-full py-3 px-4 bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Book {result.recommendedPackage} Now</span>
+              <Phone className="w-4 h-4" />
+              <span>Call Trevor to Book This</span>
             </button>
           </div>
         )}

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { VehicleType, QuoteSelection } from '../types';
 import { SERVICE_PACKAGES, CLIENT_INFO } from '../data/detailingData';
-import { Calculator, Sparkles, Check, Car, Shield, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Calculator, Sparkles, Check, Car, Shield, AlertTriangle, Phone } from 'lucide-react';
 
 interface QuoteEstimatorProps {
   onOpenConsultantWithData?: (data: Partial<QuoteSelection>) => void;
-  onOpenBookingWithPackage?: (packageId: string, vehicleInfo: string) => void;
+  onCallTrevor?: () => void;
 }
 
 export const QuoteEstimator: React.FC<QuoteEstimatorProps> = ({
   onOpenConsultantWithData,
-  onOpenBookingWithPackage,
+  onCallTrevor,
 }) => {
   const [vehicleType, setVehicleType] = useState<VehicleType>('sedan');
   const [vehicleYear, setVehicleYear] = useState('2022');
@@ -80,12 +80,6 @@ export const QuoteEstimator: React.FC<QuoteEstimatorProps> = ({
     }
   };
 
-  const handleBookNow = () => {
-    const vehicleString = `${vehicleYear} ${vehicleMake} ${vehicleModel} (${paintColor})`;
-    if (onOpenBookingWithPackage) {
-      onOpenBookingWithPackage(selectedService, vehicleString);
-    }
-  };
 
   return (
     <section id="estimator" className="py-20 bg-zinc-900/60 border-t border-zinc-800 text-white relative">
@@ -359,11 +353,11 @@ export const QuoteEstimator: React.FC<QuoteEstimatorProps> = ({
             {/* Action Buttons */}
             <div className="space-y-2 pt-2">
               <button
-                onClick={handleBookNow}
+                onClick={() => onCallTrevor?.()}
                 className="w-full py-3.5 px-4 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-xl shadow-xl shadow-red-950 border border-red-500/40 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Book This Package with Trevor</span>
-                <ArrowRight className="w-4 h-4" />
+                <Phone className="w-4 h-4" />
+                <span>Call Trevor About This Quote</span>
               </button>
 
               <button
